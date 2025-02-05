@@ -64,6 +64,9 @@ describe("Sieve", () => {
     expect(sieve.atkinSieve(20)).toEqual(
        [2, 3, 5,7,11,13,17,19]
   );
+    expect(sieve.atkinSieve(1000)).toEqual(
+       primesUpTo1000.filter(val => !!val)
+  );
     // expect(sieve.NthPrime(0)).toBe(2);
     // expect(sieve.NthPrime(19)).toBe(71);
     // expect(sieve.NthPrime(99)).toBe(541);

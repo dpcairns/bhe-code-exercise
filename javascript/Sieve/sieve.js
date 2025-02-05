@@ -18,6 +18,13 @@ class Sieve {
   isEven(n) {
     return n % 2 === 0;
   }
+  loopXY(n, callback) {
+    for (let i = 1; i < n; i++) {
+      for (let j = 1; j < n; j++) {
+        callback(i, j);
+      }
+    }
+  }
   atkinSieve(n) {
     const resultsSieve = [2, 3, 5];
     const arrayLength = n - 1 >= 1 ? n : 1;
@@ -31,8 +38,8 @@ class Sieve {
     isPrimeArray.forEach((entry) => {
         const modulo60 = entry.val % 60;
 
-        for (let i = 1; i < n; i++) {
-          for (let j = 1; j < n; j++) {
+        for (let i = 1; i < n /2; i++) {
+          for (let j = 1; j < n / 2; j++) {
             if (magicNumbers.includes(modulo60) && !this.isEven(j)) {
                 const valueToFlip = (4 * Math.pow(i, 2)) + Math.pow(j, 2);
                 if (valueToFlip === entry.val) {
@@ -70,15 +77,15 @@ class Sieve {
     
           const squaredPrime = Math.pow(entry.val, 2);
     
-          let n = 2;
+          let multiple = 1;
     
           
-          while (squaredPrime * n < n) {
-            const valueToFlip = squaredPrime * n;
+          while (squaredPrime * multiple < n) {
+            const valueToFlip = squaredPrime * multiple;
             const entryToFlip = isPrimeArray[valueToFlip - 1]
             entryToFlip.isPrime = false;
     
-            n++
+            multiple++
           }
       }
     });
