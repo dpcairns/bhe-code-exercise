@@ -1,15 +1,24 @@
 class Sieve {
   NthPrime(n) {
-    console.log({ n})
-
     let temp = 0;
-    // starting with 2,
-    while (temp < n) {
-      console.log(arr[n])
-    }
+    let primesCount = 0;
+    let primesArray = null;
+    
+    do {
+      const { count, primes } = this.findPrimesUpToN(temp);
+
+
+      primesArray = primes;
+      primesCount = count;
+      temp++;
+     } while (primesCount < n + 1) 
+
+    return primesArray.pop();
   }
-  findPrimesBelowN(n) {
-    const arr = new Array(n - 1).fill(2).reduce((acc, curr, index) => {
+
+  findPrimesUpToN(n) {
+    const arrayLength = n - 1 >= 1 ? n : 1;
+    const arr = new Array(arrayLength).fill(2).reduce((acc, curr, index) => {
       if (index === 0) return acc;
 
       return [...acc, acc[index - 1] + 1];
@@ -18,10 +27,13 @@ class Sieve {
     const primes = []
     let anchorPrime = 2;
     let anchorPrimeIndex = 0;
+    let count = 0
+
     while (anchorPrime < n) {
       for (let i = anchorPrimeIndex; i < arr.length; i += anchorPrime) {
         if (i > anchorPrimeIndex + 1) {
-          arr.splice(i, 1, 'marked')
+          arr.splice(i, 1, 'marked');
+          count++;
         }
       }
 
@@ -37,7 +49,10 @@ class Sieve {
       }
     }
     
-    return arr.filter(item => item !== 'marked');
+    return {
+      primes: arr,
+      count: arr.filter(item => item !== 'marked').length,
+    }
   }
 }
 
