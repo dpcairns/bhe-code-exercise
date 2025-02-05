@@ -2,7 +2,8 @@
   "name": "sieve",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "jest": "^29.7.0"
