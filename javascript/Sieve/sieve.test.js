@@ -11,7 +11,7 @@ describe("Sieve", () => {
     expect(NthPrime(2000)).toBe(17393);
     expect(NthPrime(1000000)).toBe(15485867); // Time: 0.827 s
     expect(NthPrime(10000000)).toBe(179424691); // Time: 4.075 s,
-    // expect(NthPrime(100000000)).toBe(2038074751); // Time: 47.915 s // not required, just a fun challenge
+    expect(NthPrime(100000000)).toBe(2038074751); // Time: 47.915 s // not required, just a fun challenge
   });
 
   test("sieveOfAtkin", () => {
