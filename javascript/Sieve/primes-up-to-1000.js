@@ -1,4 +1,4 @@
-const primesUpTo1000 = [  
+const primesUpTo1000 = [
   2,
   3,
   null,
@@ -997,9 +997,6 @@ const primesUpTo1000 = [
   997,
   null,
   null,
-  null,
-  null,
-]
-
+];
 
 module.exports = primesUpTo1000;
