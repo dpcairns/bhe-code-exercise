@@ -70,10 +70,8 @@ function sieveOfAtkin(n, prevPrimes) {
       }
     }
   });
-
   return {
     primes: resultsSieve,
-    isPrimeArray,
     count: resultsSieve.length,
   };
 }
