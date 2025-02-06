@@ -17,7 +17,7 @@ function NthPrime(n) {
     arr[i] = i + 2;
   }
 
-  // Repeat this process until we return a winner (i.e., we )
+  // Repeat this process until we return a winner (i.e., we have all the primes we need to match the target n)
   while (primes.length <= n) {
     for (
       // Start at the first multiple of the "anchor" prime
