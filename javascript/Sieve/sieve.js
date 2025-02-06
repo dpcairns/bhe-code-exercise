@@ -8,7 +8,7 @@ function NthPrime(n) {
   let anchorPrime = 2;
   let anchorPrimeIndex = 0;
 
-  // Set magical upper limit, per prime number theorem (apparently?)
+  // Set upper limit, per prime number theorem
   const limit = Math.ceil(n * Math.log(n * Math.log(n)));
 
   const arr = new Uint32Array(limit);
