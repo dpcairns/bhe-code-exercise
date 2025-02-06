@@ -2,22 +2,10 @@ const sieveOfAtkin = require("./sieve-of-atkin");
 const sieveOfEratosthenes = require("./sieve-of-eratosthenes");
 
 function NthPrime(n) {
-  let sieveLength = 0;
-  let primesCount = 0;
-  let primesArray = null;
+  const nthPrime = sieveOfEratosthenes(n);
 
-  // Sieve through every length of array until the number of primes returned equals the limit, n
-  do {
-    const { primes, count } = sieveOfEratosthenes(sieveLength, primesArray);
-    primesArray = primes;
-    primesCount = count;
-    sieveLength++;
-
-    // Sieve at least once (in case n is 0), then if we haven't hit our limit, incrememnt
-  } while (primesCount < n + 1);
-
-  // The last item in the "composite elimination array" should be our target prime
-  return primesArray.pop();
+  console.log({ nthPrime });
+  return nthPrime;
 }
 
 function NthPrimeAtkin(n) {

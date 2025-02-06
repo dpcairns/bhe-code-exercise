@@ -1,19 +1,23 @@
 function sieveOfEratosthenes(n, prevPrimes) {
   // Base case
-  if (n === 0) return { primes: [2], count: 1 };
+  if (n === 0) return 2;
 
   const primes = [2];
   let headPrime = 2;
   let headPrimeIndex = 0;
 
+  // const limit = n*Math.log(n) + n*Math.log(Math.log(n))
+  const limit = Math.ceil(n * Math.log(n * Math.log(n)));
+
+  console.log({ limit });
   let arr = prevPrimes
     ? // Use memoized array to prevent redundant recalculation of already eliminated composites
       [...prevPrimes, prevPrimes.length + 2]
     : // If no memo available, create incrementing array 2 -> n
-      new Array(n - 2).fill(null).map((_, i) => i + 2);
+      new Array(limit).fill(null).map((_, i) => i + 2);
 
   // As long as 1) have a head prime and 2) that head prime is not a winner (i.e., not as big as our limit)
-  while (Boolean(headPrime) && headPrime < n) {
+  while (Boolean(headPrime) && headPrime < limit) {
     // Start at the first multiple of the "head" prime
     for (
       let i = headPrimeIndex + headPrime;
@@ -37,6 +41,10 @@ function sieveOfEratosthenes(n, prevPrimes) {
         headPrimeIndex = j;
         headPrime = primeCandidate;
         primes.push(primeCandidate);
+        if (primes.length > n) {
+          return primeCandidate;
+        }
+
         break;
       }
 
@@ -48,10 +56,7 @@ function sieveOfEratosthenes(n, prevPrimes) {
     }
   }
 
-  return {
-    primes: arr,
-    count: primes.length,
-  };
+  return primes[n];
 }
 
 module.exports = sieveOfEratosthenes;
